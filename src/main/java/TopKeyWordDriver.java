@@ -23,6 +23,7 @@ public class TopKeyWordDriver extends Configured implements Tool {
 
         Job job = Job.getInstance(getConf());
         job.setJarByClass(TopKeyWordDriver.class);
+        job.setJobName("TopKeyWordDriver");
 
         FileInputFormat.addInputPath(job, new Path(args[0]));
         FileOutputFormat.setOutputPath(job, new Path(args[1]));

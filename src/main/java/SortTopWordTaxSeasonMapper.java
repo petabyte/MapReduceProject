@@ -19,7 +19,7 @@ public class SortTopWordTaxSeasonMapper extends Mapper<Text, Text, IntWritable, 
             throws IOException, InterruptedException {
         try {
             String lineRecord = value.toString();
-            String [] lineSplit = lineRecord.split("\\s+");
+            String [] lineSplit = lineRecord.split("\\t+");
             String firstElement = lineSplit[1];
             keyIntWritable.set(Integer.parseInt(firstElement));
             context.write(keyIntWritable, key);

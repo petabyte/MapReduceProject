@@ -6,7 +6,6 @@
 
     <groupId>MapReduceProject</groupId>
     <artifactId>MapReduceProject</artifactId>
-    <packaging>pom</packaging>
     <version>1.0</version>
     <properties>
         <hadoop.version>2.5.1</hadoop.version>

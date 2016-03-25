@@ -23,6 +23,7 @@ public class CountKeyWordDriver extends Configured implements Tool {
 
         Job job = Job.getInstance(getConf());
         job.setJarByClass(CountKeyWordDriver.class);
+        job.setJobName("CountKeyWordDriver");
 
         FileInputFormat.addInputPath(job, new Path(args[0]));
         FileOutputFormat.setOutputPath(job, new Path(args[1]));

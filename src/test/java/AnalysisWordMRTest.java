@@ -58,16 +58,16 @@ public class AnalysisWordMRTest {  /*
      */
     @Test
     public void testMapper1() throws IOException, URISyntaxException {
-        mapDriver.addCacheFile(this.getClass().getResource("testFile.txt").toURI());
+        mapDriver.addCacheFile(this.getClass().getResource("totalCountFile.txt").toURI());
         mapDriver.withInput(new Text("testKeyword0"), new Text("4\t0"))
                 .withInput(new Text("testKeyword1"), new Text("3\t2"))
                 .withInput(new Text("testKeyword2"), new Text("5\t3"))
                 .withInput(new Text("testKeyword3"), new Text("6\t4"))
                 .withInput(new Text("testKeyWord4"), new Text("badData"));
-        mapDriver.withOutput(new DoubleWritable(new Double(0/((4 * 11)/15))),new Text("testKeyword0"));
-        mapDriver.withOutput(new DoubleWritable(new Double(2/((3 * 12)/15))),new Text("testKeyword1"));
-        mapDriver.withOutput(new DoubleWritable(new Double(3/((5 * 10)/15))),new Text("testKeyword2"));
-        mapDriver.withOutput(new DoubleWritable(new Double(4/((6 * 9)/15))),new Text("testKeyword3"));
+        mapDriver.withOutput(new DoubleWritable(0.0),new Text("testKeyword0"));
+        mapDriver.withOutput(new DoubleWritable(6.400000000000001),new Text("testKeyword1"));
+        mapDriver.withOutput(new DoubleWritable(4.0),new Text("testKeyword2"));
+        mapDriver.withOutput(new DoubleWritable(3.5999999999999996),new Text("testKeyword3"));
         mapDriver.runTest();
     }
 
@@ -91,16 +91,16 @@ public class AnalysisWordMRTest {  /*
      */
     @Test
     public void testMapReduce1() throws IOException, URISyntaxException {
-        mapReduceDriver.addCacheFile(this.getClass().getResource("testFile.txt").toURI());
+        mapReduceDriver.addCacheFile(this.getClass().getResource("totalCountFile.txt").toURI());
         mapReduceDriver.withInput(new Text("testKeyword0"), new Text("4\t0"))
                 .withInput(new Text("testKeyword1"), new Text("3\t2"))
                 .withInput(new Text("testKeyword2"), new Text("5\t3"))
                 .withInput(new Text("testKeyword3"), new Text("6\t4"))
                 .withInput(new Text("testKeyWord4"), new Text("badData"));
-        mapReduceDriver.withOutput(new DoubleWritable(new Double(0/((4 * 11)/15))),new Text("testKeyword0"));
-        mapReduceDriver.withOutput(new DoubleWritable(new Double(2/((3 * 12)/15))),new Text("testKeyword1"));
-        mapReduceDriver.withOutput(new DoubleWritable(new Double(3/((5 * 10)/15))),new Text("testKeyword2"));
-        mapReduceDriver.withOutput(new DoubleWritable(new Double(4/((6 * 9)/15))),new Text("testKeyword3"));
+        mapReduceDriver.withOutput(new DoubleWritable(0.0),new Text("testKeyword0"));
+        mapReduceDriver.withOutput(new DoubleWritable(3.5999999999999996),new Text("testKeyword3"));
+        mapReduceDriver.withOutput(new DoubleWritable(4.0),new Text("testKeyword2"));
+        mapReduceDriver.withOutput(new DoubleWritable(6.400000000000001),new Text("testKeyword1"));
         mapReduceDriver.runTest();
     }
 

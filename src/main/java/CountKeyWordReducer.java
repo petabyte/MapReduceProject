@@ -9,7 +9,7 @@ import java.io.IOException;
  */
 public class CountKeyWordReducer extends Reducer<Text, IntWritable, Text, IntWritable> {
 
-    Text totalAllKeywWords = new Text("Total Keywords");
+    Text totalAllKeywWords = new Text("Total");
     IntWritable keyWordsCountIntWritable = new IntWritable();
     int keyWordsCount = 0;
     @Override

@@ -19,7 +19,7 @@ public class SortKeyTopWordMapper extends Mapper<Text, Text, IntWritable, Text> 
             throws IOException, InterruptedException {
         try {
             String lineRecord = value.toString();
-            String [] lineSplit = lineRecord.split("\\s+");
+            String [] lineSplit = lineRecord.split("\\t+");
             String firstElement = lineSplit[0];
             keyIntWritable.set(Integer.parseInt(firstElement));
             context.write(keyIntWritable, key);

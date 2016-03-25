@@ -83,7 +83,7 @@ public class CountKeyWordMRTest  {  /*
         values.add(new IntWritable(1));
         values.add(new IntWritable(1));
         reduceDriver.withInput(new Text("charitable contribution"), values);
-        reduceDriver.withOutput(new Text("Total Keywords"), new IntWritable(4));
+        reduceDriver.withOutput(new Text("Total"), new IntWritable(4));
         reduceDriver.runTest();
     }
 
@@ -99,7 +99,7 @@ public class CountKeyWordMRTest  {  /*
                 .withInput(new LongWritable(1), new Text("10_01BCEA5099D956DCE55F349110EEBF72\t\"\"   giftTax   \"\"\t1\t2\tTC\t60\tv1\t366"))
                 .withInput(new LongWritable(1), new Text("10_01BCEA5099D956DCE55F349110EEBF72\tdog and cat\t1\t2\tTC\t60\tv1\t366"))
                 .withInput(new LongWritable(1), new Text("badData"));
-        mapReduceDriver.withOutput(new Text("Total Keywords"), new IntWritable(4));
+        mapReduceDriver.withOutput(new Text("Total"), new IntWritable(4));
         mapReduceDriver.runTest();
 
     }
