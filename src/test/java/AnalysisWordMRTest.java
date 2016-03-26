@@ -64,10 +64,10 @@ public class AnalysisWordMRTest {  /*
                 .withInput(new Text("testKeyword2"), new Text("5\t3"))
                 .withInput(new Text("testKeyword3"), new Text("6\t4"))
                 .withInput(new Text("testKeyWord4"), new Text("badData"));
-        mapDriver.withOutput(new DoubleWritable(0.0),new Text("testKeyword0"));
-        mapDriver.withOutput(new DoubleWritable(6.400000000000001),new Text("testKeyword1"));
-        mapDriver.withOutput(new DoubleWritable(4.0),new Text("testKeyword2"));
-        mapDriver.withOutput(new DoubleWritable(3.5999999999999996),new Text("testKeyword3"));
+        mapDriver.withOutput(new DoubleWritable(0.49587),new Text("testKeyword0"));
+        mapDriver.withOutput(new DoubleWritable(0.03473),new Text("testKeyword1"));
+        mapDriver.withOutput(new DoubleWritable(0.12),new Text("testKeyword2"));
+        mapDriver.withOutput(new DoubleWritable(0.12346),new Text("testKeyword3"));
         mapDriver.runTest();
     }
 
@@ -97,10 +97,10 @@ public class AnalysisWordMRTest {  /*
                 .withInput(new Text("testKeyword2"), new Text("5\t3"))
                 .withInput(new Text("testKeyword3"), new Text("6\t4"))
                 .withInput(new Text("testKeyWord4"), new Text("badData"));
-        mapReduceDriver.withOutput(new DoubleWritable(0.0),new Text("testKeyword0"));
-        mapReduceDriver.withOutput(new DoubleWritable(3.5999999999999996),new Text("testKeyword3"));
-        mapReduceDriver.withOutput(new DoubleWritable(4.0),new Text("testKeyword2"));
-        mapReduceDriver.withOutput(new DoubleWritable(6.400000000000001),new Text("testKeyword1"));
+        mapReduceDriver.withOutput(new DoubleWritable(0.03473),new Text("testKeyword1"));
+        mapReduceDriver.withOutput(new DoubleWritable(0.12),new Text("testKeyword2"));
+        mapReduceDriver.withOutput(new DoubleWritable(0.12346),new Text("testKeyword3"));
+        mapReduceDriver.withOutput(new DoubleWritable(0.49587),new Text("testKeyword0"));
         mapReduceDriver.runTest();
     }
 

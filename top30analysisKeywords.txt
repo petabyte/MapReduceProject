@@ -1,0 +1,30 @@
+0.00447	executive
+0.00269	dog & cat
+9.3E-4	bonus depreciation
+8.8E-4	nexus
+6.7E-4	apportionment
+6.4E-4	depreciation
+5.9E-4	software
+5.9E-4	net operating loss
+5.1E-4	sales factor
+4.6E-4	manufacturing
+4.3E-4	services
+4.1E-4	nol
+3.2E-4	engagement letter
+3.1E-4	like kind exchange
+2.9E-4	lease
+2.9E-4	section 179
+2.8E-4	"bonus depreciation"
+2.5E-4	179
+2.4E-4	"statute of limitations"
+2.4E-4	1099
+2.4E-4	charitable contributions
+2.4E-4	partnership
+2.3E-4	inventory
+2.2E-4	installation
+2.2E-4	162
+2.2E-4	spouse public
+2.2E-4	goodwill
+2.2E-4	contractor
+2.2E-4	construction
+2.1E-4	afr

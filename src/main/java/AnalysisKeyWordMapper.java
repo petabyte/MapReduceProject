@@ -12,7 +12,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.math.RoundingMode;
 import java.net.URI;
+import java.text.DecimalFormat;
 
 /**
  * Created by George on 3/24/2016.
@@ -26,6 +28,7 @@ public class AnalysisKeyWordMapper  extends Mapper<Text, Text, DoubleWritable, T
     DoubleWritable analysisDoubleWritable = new DoubleWritable();
     FileSystem hdfs = null;
     public static Logger log = Logger.getLogger(AnalysisKeyWordMapper.class);
+    DecimalFormat df = new DecimalFormat("#.#####");
     @Override
     protected void setup(Context context) throws IOException, InterruptedException {
         if (context.getCacheFiles() != null && context.getCacheFiles().length > 0) {
@@ -42,6 +45,7 @@ public class AnalysisKeyWordMapper  extends Mapper<Text, Text, DoubleWritable, T
                     String intValue = fileLineSplit[1].trim().replaceAll("\r","").replaceAll("\n","");
                     log.info("int Value: ["+ intValue+"]");
                     totalCount = Integer.parseInt(intValue);
+                    df.setRoundingMode(RoundingMode.CEILING);
                 }catch(NumberFormatException nfe){
                     context.getCounter(BAD_COUNT.BAD_TOTAL_COUNT).increment(1);
                 }catch(ArrayIndexOutOfBoundsException aie){
@@ -61,23 +65,11 @@ public class AnalysisKeyWordMapper  extends Mapper<Text, Text, DoubleWritable, T
             String secondElement = lineSplit[1].trim();
             double totalKeyword = Double.parseDouble(firstElement);
             double totalKeywordForTaxSeason = Double.parseDouble(secondElement);
-            double totalOtherKeywords = totalCount - totalKeyword;
-//            log.info("Keyword: ["+ key.toString()+"]");
-//            log.info("Total for Keyword: ["+ totalKeyword+"]");
-//            log.info("Total for Keyword Tax Season: ["+ totalKeywordForTaxSeason+"]");
-//            log.info("Total for Other Keywords: ["+ totalOtherKeywords+"]");
-//            log.info("Total : ["+ totalCount+"]");
-            double chi1 = totalKeywordForTaxSeason / totalCount ;
-            double chi2 = totalKeyword / totalCount ;
-            double expected = chi1 * chi2 * totalCount;
-
-
-            //log.info("chi Divisor : ["+ chiDivisor  +"]");
-            double chiDouble =  (Math.pow((totalKeywordForTaxSeason - expected), 2) / expected);
-            double chiValue = !Double.isNaN(chiDouble) ? chiDouble : 0.0;
-           // log.info("chi Value : ["+ chiValue  +"]");
-
-            analysisDoubleWritable.set(chiValue);
+            double chiTaxSeason = Math.pow(totalKeywordForTaxSeason - totalKeyword, 2) / totalKeyword ;
+            double chiAllPopulation = Math.pow(totalKeyword - totalCount, 2) / totalCount ;
+            double expected = chiTaxSeason / chiAllPopulation;
+            double chiValue = !Double.isNaN(expected) ? expected : 0.0;
+            analysisDoubleWritable.set(Double.parseDouble(df.format(chiValue)));
             context.write(analysisDoubleWritable,key);
         }catch(NumberFormatException nfe){
             context.getCounter(BAD_COUNT.BAD_TOTAL_COUNT).increment(1);

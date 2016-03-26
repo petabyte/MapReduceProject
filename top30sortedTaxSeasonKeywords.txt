@@ -1,0 +1,30 @@
+85783	executive
+42915	dog & cat
+14991	nexus
+14946	bonus depreciation
+11866	apportionment
+11085	depreciation
+10379	software
+8380	net operating loss
+7890	sales factor
+7700	extension
+7476	manufacturing
+7217	services
+5740	nol
+5401	section 179
+5098	goodwill
+4854	lease
+4776	withholding
+4748	dependent
+4704	partnership
+4601	"bonus depreciation"
+4448	like kind exchange
+4374	kiddie tax
+4241	installment sale
+4188	s corporation
+4170	179
+4162	"statute of limitations"
+4076	casualty loss
+4046	tax rate
+3917	inventory
+3897	start up costs
